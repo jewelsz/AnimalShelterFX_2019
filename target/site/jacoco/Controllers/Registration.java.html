@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="nl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Registration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">AnimalShelterFX_2019</a> &gt; <a href="index.source.html" class="el_package">Controllers</a> &gt; <span class="el_source">Registration.java</span></div><h1>Registration.java</h1><pre class="source lang-java linenums">package Controllers;
+
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import Models.*;
+
+import java.util.ArrayList;
+
+public class Registration
+{
+<span class="nc" id="L11">    private ArrayList&lt;Animal&gt; animals = new ArrayList&lt;&gt;();</span>
+    private final PropertyChangeSupport support;
+
+    public Registration()
+<span class="nc" id="L15">    {</span>
+<span class="nc" id="L16">        support = new PropertyChangeSupport(this);</span>
+<span class="nc" id="L17">    }</span>
+
+    public void addPropertyChangeListener(PropertyChangeListener listener)
+    {
+<span class="nc" id="L21">        support.addPropertyChangeListener(listener);</span>
+<span class="nc" id="L22">    }</span>
+
+    public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener)
+    {
+<span class="nc" id="L26">        support.addPropertyChangeListener(propertyName, listener);</span>
+<span class="nc" id="L27">    }</span>
+
+    public void removePropertyChangeListener(PropertyChangeListener listener)
+    {
+<span class="nc" id="L31">        support.removePropertyChangeListener(listener);</span>
+<span class="nc" id="L32">    }</span>
+
+    public void NewCat(String name, Gender gender, String badHabits)
+    {
+<span class="nc" id="L36">        Animal newcat = new Cat(name, gender, badHabits);</span>
+<span class="nc" id="L37">        this.animals.add(newcat);</span>
+<span class="nc" id="L38">        support.firePropertyChange(&quot;addCatEvent&quot;, null, newcat);</span>
+
+<span class="nc" id="L40">    }</span>
+
+    public void NewDog(String name, Gender gender)
+    {
+<span class="nc" id="L44">        Animal newdog = new Dog(name, gender);</span>
+<span class="nc" id="L45">        this.animals.add(newdog);</span>
+<span class="nc" id="L46">        support.firePropertyChange(&quot;addDogEvent&quot;, null, newdog);</span>
+<span class="nc" id="L47">    }</span>
+
+    private void removeDog(int id)
+    {
+<span class="nc" id="L51">        Animal supposelpydog= this.animals.get(id);</span>
+<span class="nc" id="L52">        this.animals.remove(supposelpydog);</span>
+<span class="nc" id="L53">        support.firePropertyChange(&quot;removeDogEvent&quot;, null, supposelpydog);</span>
+<span class="nc" id="L54">    }</span>
+    public ArrayList&lt;Animal&gt; getAnimals() {
+<span class="nc" id="L56">        return animals;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

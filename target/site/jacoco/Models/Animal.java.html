@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="nl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Animal.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">AnimalShelterFX_2019</a> &gt; <a href="index.source.html" class="el_package">Models</a> &gt; <span class="el_source">Animal.java</span></div><h1>Animal.java</h1><pre class="source lang-java linenums">package Models;
+
+import Webshop.ISellable;
+
+import java.util.Date;
+
+public class Animal implements ISellable
+{
+    public String name;
+    public Gender gender;
+    public Reservor ReservedBy;
+    public int price;
+
+    public Animal(String name, Gender gender, int price)
+<span class="nc" id="L15">    {</span>
+<span class="nc" id="L16">        this.name = name;</span>
+<span class="nc" id="L17">        this.gender = gender;</span>
+<span class="nc" id="L18">        this.price = price;</span>
+<span class="nc" id="L19">    }</span>
+
+    public boolean Reserve(String reservedBy)
+    {
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        if (this.ReservedBy == null)</span>
+        {
+<span class="nc" id="L25">            Date today = new Date();</span>
+<span class="nc" id="L26">            this.ReservedBy = new Reservor(reservedBy, today);</span>
+<span class="nc" id="L27">            return true;</span>
+        }
+<span class="nc" id="L29">        return false;</span>
+    }
+
+    public String getName() {
+<span class="nc" id="L33">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="nc" id="L37">        name = name;</span>
+<span class="nc" id="L38">    }</span>
+
+    public Gender getGender() {
+<span class="nc" id="L41">        return gender;</span>
+    }
+
+    public void setGender(Gender gender) {
+<span class="nc" id="L45">        gender = gender;</span>
+<span class="nc" id="L46">    }</span>
+
+    public Reservor getReservedBy() {
+<span class="nc" id="L49">        return ReservedBy;</span>
+    }
+
+    public void setReservedBy(Reservor reservedBy) {
+<span class="nc" id="L53">        ReservedBy = reservedBy;</span>
+<span class="nc" id="L54">    }</span>
+
+    public int getPrice() {
+<span class="nc" id="L57">        return price;</span>
+    }
+
+    public String toString()
+    {
+<span class="nc" id="L62">        String reserved = &quot;not reserved&quot;;</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">        if (this.ReservedBy != null)</span>
+        {
+<span class="nc" id="L65">            reserved = &quot;reserved by &quot;+ this.ReservedBy.Name;</span>
+        }
+<span class="nc" id="L67">        return this.name + &quot;, &quot; + this.gender;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

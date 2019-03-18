@@ -1,9 +1,12 @@
 package sample;
 
-import Controllers.Reservation;
+import Controllers.Registration;
+import Models.Animal;
+import Models.Dog;
 import Models.Gender;
-import Webshop.Product;
 import javafx.scene.control.*;
+
+import java.beans.PropertyChangeEvent;
 
 public class Controller
 {
@@ -11,11 +14,21 @@ public class Controller
     public TextArea habitsTxt;
     public Label warmingMessageTxt;
     public ListView animalList;
+    Registration res = new Registration();
 
-    Reservation res = new Reservation();
+    public Controller() {
+        res.addPropertyChangeListener("addDogEvent", Controller::addDogEvent);
+    }
+
 
     private boolean isCat = true;
     private Gender gender = Gender.Female;
+
+    private static void addDogEvent(PropertyChangeEvent evt) {
+        Dog animal = (Dog) evt.getNewValue();
+        System.out.println("Het addDogEvent is afgevuurd!");
+        System.out.println(animal.name);
+    }
 
     public void changeToCat()
     {
@@ -64,7 +77,6 @@ public class Controller
             }
         }
 
-        updateList();
 
     }
 
@@ -73,16 +85,9 @@ public class Controller
 
     }
 
-    private void updateList()
-    {
-        animalList.getItems().clear();
-        animalList.getItems().addAll(res.getAnimals());
-    }
 
-    public void initialize()
-    {
+    public void initialize() {
         habitsTxt.setText(null);
         nameTxt.setText(null);
     }
-
 }
