@@ -4,6 +4,7 @@ import Controllers.Registration;
 import Models.Animal;
 import Models.Dog;
 import Models.Gender;
+import Webshop.Webshop;
 import javafx.scene.control.*;
 
 import java.beans.PropertyChangeEvent;
@@ -14,9 +15,17 @@ public class Controller
     public TextArea habitsTxt;
     public Label warmingMessageTxt;
     public ListView animalList;
-    Registration res = new Registration();
 
-    public Controller() {
+    //Design pattern toevoegen / Factory / observer pattern CHECK
+    //Database toevoegen animals
+    //Jenkins runnen
+    //Tests schrijven
+
+    Registration res = new Registration();
+    Webshop webshop = new Webshop();
+
+    public Controller()
+    {
         res.addPropertyChangeListener("addDogEvent", Controller::addDogEvent);
     }
 
