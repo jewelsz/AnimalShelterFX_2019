@@ -9,6 +9,8 @@ import java.util.ArrayList;
 public class Registration
 {
     private ArrayList<Animal> animals = new ArrayList<>();
+    private ArrayList<Dog> dogs = new ArrayList<>();
+
     private final PropertyChangeSupport support;
 
     public Registration()
@@ -41,8 +43,9 @@ public class Registration
 
     public void NewDog(String name, Gender gender)
     {
-        Animal newdog = new Dog(name, gender);
+        Animal newdog = new Dog(name, gender, dogs.size());
         this.animals.add(newdog);
+        this.dogs.add((Dog)newdog);
         support.firePropertyChange("addDogEvent", null, newdog);
     }
 

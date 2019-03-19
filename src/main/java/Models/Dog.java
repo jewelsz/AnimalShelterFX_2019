@@ -13,10 +13,12 @@ public class Dog extends Animal
     public boolean NeedsWalk;
 
 
-    public Dog(String name, Gender gender)
+    public Dog(String name, Gender gender, int dogCount)
     {
         super(name, gender, 500);
         LastWalk = new Date();
+        price -= dogCount*50;
+        System.out.println(this.getPrice());
     }
 
     public Date getLastWalk()

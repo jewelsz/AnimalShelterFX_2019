@@ -5,23 +5,23 @@ import Models.Animal;
 import Models.Dog;
 import Models.Gender;
 import Webshop.Webshop;
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 
 import java.beans.PropertyChangeEvent;
 
 public class Controller
 {
+    private static Registration res;
     public TextField nameTxt, nameProductTxt, priceProductTxt;
     public TextArea habitsTxt;
     public Label warmingMessageTxt;
-    public ListView animalList;
+    public static ListView animalList;
 
-    //Design pattern toevoegen / Factory / observer pattern CHECK
-    //Database toevoegen animals
-    //Jenkins runnen
-    //Tests schrijven
 
-    Registration res = new Registration();
+    private boolean isCat = true;
+    private Gender gender = Gender.Female;
+
     Webshop webshop = new Webshop();
 
     public Controller()
@@ -30,13 +30,13 @@ public class Controller
     }
 
 
-    private boolean isCat = true;
-    private Gender gender = Gender.Female;
-
     private static void addDogEvent(PropertyChangeEvent evt) {
         Dog animal = (Dog) evt.getNewValue();
         System.out.println("Het addDogEvent is afgevuurd!");
         System.out.println(animal.name);
+
+        animalList.getItems().clear();
+        animalList.setItems((ObservableList) res.getAnimals());
     }
 
     public void changeToCat()

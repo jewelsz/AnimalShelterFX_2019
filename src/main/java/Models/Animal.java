@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class Animal implements ISellable
 {
+    public int id;
     public String name;
     public Gender gender;
     public Reservor ReservedBy;
@@ -27,6 +28,18 @@ public class Animal implements ISellable
             return true;
         }
         return false;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public String getName() {
