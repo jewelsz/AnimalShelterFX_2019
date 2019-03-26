@@ -2,12 +2,15 @@ package Controllers;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+
+import Database.DbAnimal;
 import Models.*;
 
 import java.util.ArrayList;
 
 public class Registration
 {
+    DbAnimal dbReg = new DbAnimal();
     private ArrayList<Animal> animals = new ArrayList<>();
     private ArrayList<Dog> dogs = new ArrayList<>();
 
@@ -18,25 +21,17 @@ public class Registration
         support = new PropertyChangeSupport(this);
     }
 
-    public void addPropertyChangeListener(PropertyChangeListener listener)
-    {
-        support.addPropertyChangeListener(listener);
-    }
 
     public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener)
     {
         support.addPropertyChangeListener(propertyName, listener);
     }
 
-    public void removePropertyChangeListener(PropertyChangeListener listener)
-    {
-        support.removePropertyChangeListener(listener);
-    }
-
     public void NewCat(String name, Gender gender, String badHabits)
     {
         Animal newcat = new Cat(name, gender, badHabits);
         this.animals.add(newcat);
+        dbReg.insertCat((Cat)newcat);
         support.firePropertyChange("addCatEvent", null, newcat);
 
     }
@@ -59,4 +54,14 @@ public class Registration
         return animals;
     }
 
+
+    public void removePropertyChangeListener(PropertyChangeListener listener)
+    {
+        support.removePropertyChangeListener(listener);
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener)
+    {
+        support.addPropertyChangeListener(listener);
+    }
 }

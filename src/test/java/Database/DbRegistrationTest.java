@@ -9,15 +9,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DbRegistrationTest
 {
-    DbRegistration dbRegistration = new DbRegistration();
-
-    private DbConnection dbConnection = new DbConnection("animalshelterdb");
+    private DbConnection dbConnection = new DbConnection();
 
     @Test
     void insertCat()
     {
         Cat cat = new Cat ("Ozzy", Gender.Male, "");
-        //dbConnection.insertCat(cat);
+        dbConnection.insertCat(cat);
 
     }
 }

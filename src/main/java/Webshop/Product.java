@@ -20,4 +20,9 @@ public class Product implements ISellable
     public int getPrice() {
         return price;
     }
+
+    public String toString()
+    {
+        return this.name + ", " + this.price;
+    }
 }

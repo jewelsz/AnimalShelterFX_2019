@@ -1,5 +1,6 @@
 package Factory;
 
+import Controllers.Registration;
 import Models.Animal;
 import Models.Cat;
 import Models.Dog;
@@ -9,18 +10,17 @@ import java.util.ArrayList;
 
 public class AnimalFactory
 {
-    public ArrayList<Animal> animals;
+    public Registration reg;
 
     public void createAnimals()
     {
-        animals = new ArrayList<>();
 
-        animals.add(new Cat("Zora", Gender.Female, "Zeurt"));
-        animals.add(new Cat("Gijs", Gender.Male, "Eet veel"));
-        animals.add(new Cat("Amber", Gender.Female, ""));
+        reg.NewCat("Zora", Gender.Female, "Zeurt");
+        reg.NewCat("Gijs", Gender.Male, "Eet veel");
+        reg.NewCat("Amber", Gender.Female, "");
 
-        animals.add(new Dog("Denja", Gender.Female));
-        animals.add(new Dog("Onyx", Gender.Male));
-        animals.add(new Dog("Ravi", Gender.Female));
+        reg.NewDog("Denja", Gender.Female);
+        reg.NewDog("Onyx", Gender.Male);
+        reg.NewDog("Ravi", Gender.Female);
     }
 }

@@ -22,6 +22,10 @@ public class Cat extends Animal
         }
     }
 
+    public Cat(int id, String name, int price) {
+        super(id, name, price);
+    }
+
     public String getBadHabits() {
         return BadHabits;
     }

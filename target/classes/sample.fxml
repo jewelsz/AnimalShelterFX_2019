@@ -51,11 +51,12 @@
             <Label layoutX="380.0" layoutY="247.0" text="Name" />
             <Button fx:id="reserveBtn" layoutX="575.0" layoutY="304.0" mnemonicParsing="false" text="Reserveer" />
             <ChoiceBox fx:id="productDropDown" layoutX="134.0" layoutY="111.0" prefWidth="150.0" />
-            <Button fx:id="btnNewProduct" layoutX="252.0" layoutY="590.0" mnemonicParsing="false" text="Nieuw Product" />
+            <Button fx:id="addProduct" layoutX="252.0" layoutY="590.0" mnemonicParsing="false" onAction="#addProduct" text="Nieuw Product" />
             <Label layoutX="88.0" layoutY="477.0" text="Name" />
             <Label layoutX="88.0" layoutY="538.0" text="Price" />
             <TextField fx:id="nameProductTxt" layoutX="184.0" layoutY="472.0" />
             <TextField fx:id="priceProductTxt" layoutX="184.0" layoutY="533.0" />
+            <ListView fx:id="productList" layoutX="417.0" layoutY="459.0" prefHeight="200.0" prefWidth="244.0" />
             </children>
         </Pane>
     </children>

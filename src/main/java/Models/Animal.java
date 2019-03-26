@@ -19,6 +19,12 @@ public class Animal implements ISellable
         this.price = price;
     }
 
+    public Animal(int id, String name, int price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
     public boolean Reserve(String reservedBy)
     {
         if (this.ReservedBy == null)

@@ -4,7 +4,9 @@ import Controllers.Registration;
 import Models.Animal;
 import Models.Dog;
 import Models.Gender;
+import Webshop.Product;
 import Webshop.Webshop;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 
@@ -12,12 +14,15 @@ import java.beans.PropertyChangeEvent;
 
 public class Controller
 {
-    private static Registration res;
+    private static Registration res = new Registration();
     public TextField nameTxt, nameProductTxt, priceProductTxt;
     public TextArea habitsTxt;
     public Label warmingMessageTxt;
-    public static ListView animalList;
+    public ListView<Animal> animalList;
+    public ListView<Product> productList;
 
+    public static final ObservableList products =
+            FXCollections.observableArrayList();
 
     private boolean isCat = true;
     private Gender gender = Gender.Female;
@@ -34,9 +39,6 @@ public class Controller
         Dog animal = (Dog) evt.getNewValue();
         System.out.println("Het addDogEvent is afgevuurd!");
         System.out.println(animal.name);
-
-        animalList.getItems().clear();
-        animalList.setItems((ObservableList) res.getAnimals());
     }
 
     public void changeToCat()
@@ -86,14 +88,28 @@ public class Controller
             }
         }
 
+        refreshAnimals();
 
     }
 
     public void addProduct()
     {
-
+        webshop.newProduct(nameProductTxt.getText(), Integer.parseInt(priceProductTxt.getText()));
+        refreshProducts();
     }
 
+    private void refreshAnimals()
+    {
+        ObservableList<Animal> animals =FXCollections.observableArrayList(res.getAnimals());
+        animalList.setItems(animals);
+    }
+
+    private void refreshProducts()
+    {
+        ObservableList<Product> products =FXCollections.observableArrayList(webshop.getProducts());
+        //webshop.getProducts();
+        productList.setItems(products);
+    }
 
     public void initialize() {
         habitsTxt.setText(null);

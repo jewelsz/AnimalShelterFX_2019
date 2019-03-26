@@ -12,7 +12,6 @@ public class Dog extends Animal
 
     public boolean NeedsWalk;
 
-
     public Dog(String name, Gender gender, int dogCount)
     {
         super(name, gender, 500);
